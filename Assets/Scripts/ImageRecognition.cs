@@ -5,7 +5,7 @@ using UnityEngine.XR.ARSubsystems;
 using TMPro;
 using System.Collections.Generic;
 
-public class ImageRegognition  : MonoBehaviour
+public class ImageRecognition  : MonoBehaviour
 {
     //changing Image Reference Library at runtime
     //You deactivate ARTrackedImageManager, set a new library, then enable it again.
@@ -21,8 +21,6 @@ public class ImageRegognition  : MonoBehaviour
     private GameObject m_island03;
     private GameObject m_island04;
 
-
-
     public List<GameObject> foundTrackedImage = new List<GameObject>();
     //void OnEnable()
     //{
@@ -37,7 +35,7 @@ public class ImageRegognition  : MonoBehaviour
 
     void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
     {
-        foreach (ARTrackedImage trackedImage in eventArgs.added)
+        foreach (var trackedImage in eventArgs.added)
         {
             switch (trackedImage.referenceImage.name)
             {
@@ -54,7 +52,7 @@ public class ImageRegognition  : MonoBehaviour
             }
         }
 
-        foreach (ARTrackedImage trackedImage in eventArgs.updated)
+        foreach (var trackedImage in eventArgs.updated)
         {
             // image is tracking or tracking with limited state, show visuals and update it's position and rotation
             if (trackedImage.trackingState == TrackingState.Tracking)

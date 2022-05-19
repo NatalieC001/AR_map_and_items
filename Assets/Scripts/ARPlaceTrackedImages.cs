@@ -3,25 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
-using TMPro;
 
 [RequireComponent(typeof(ARTrackedImageManager))]
 public class ARPlaceTrackedImages : MonoBehaviour
 {
     // Cache AR tracked images manager from ARCoreSession
     private ARTrackedImageManager _trackedImagesManager;
-
-    IslandInventory _islandInventory;
-
+    
     // List of prefabs - these have to have the same names as the 2D images in the reference image library
     public GameObject[] ArPrefabs;
 
     // Internal storage of created prefabs for easier updating
     private readonly Dictionary<string, GameObject> _instantiatedPrefabs = new Dictionary<string, GameObject>();
-
-    // Reference to logging UI element in the canvas
-    public TextMeshProUGUI label;
-
+    
     void Awake()
     {
         _trackedImagesManager = GetComponent<ARTrackedImageManager>();
@@ -50,104 +44,18 @@ public class ARPlaceTrackedImages : MonoBehaviour
             var imageName = trackedImage.referenceImage.name;
             foreach (var curPrefab in ArPrefabs)
             {
-               
-                if (string.Compare(curPrefab.name, imageName, StringComparison.Ordinal) == 0
-                    && !_instantiatedPrefabs.ContainsKey(imageName))
-                {
-                    // Found a corresponding prefab for the reference image, and it has not been instantiated yet
-                    // -> new instance, with the ARTrackedImage as parent (so it will automatically get updated
-                    // when the marker changes in real-life)
-                    var newPrefab = Instantiate(curPrefab, trackedImage.transform);
-                    // Store a reference to the created prefab
-                    _instantiatedPrefabs[imageName] = newPrefab;
-                   
-                    //label.text = $"{Time.time} -> Instantiated prefab for tracked image (name: {imageName}).\n" +
-                    //           $"newPrefab.transform.parent.name: {newPrefab.transform.parent.name}.\n" +
-                    //           $"guid: {trackedImage.referenceImage.guid}";
-                    // Log.text ="Instantiated!";
+                if (string.Compare(curPrefab.name, imageName, StringComparison.Ordinal) != 0 ||
+                    _instantiatedPrefabs.ContainsKey(imageName)) continue;
+                // Found a corresponding prefab for the reference image, and it has not been instantiated yet
+                // -> new instance, with the ARTrackedImage as parent (so it will automatically get updated
+                // when the marker changes in real-life)
+                var newPrefab = Instantiate(curPrefab, trackedImage.transform);
+                // Store a reference to the created prefab
+                _instantiatedPrefabs[imageName] = newPrefab;
 
-
-                    ////////////////finding our items in books and showing on main map!
-
-                    ////////////////finding our items in books and showing on main map!
-                    if (imageName == "ApplePrefab")
-                    {
-                        //you found an image of an apple
-                        Debug.Log("You found" + imageName);
-                        _islandInventory.foundApple.Invoke();
-
-                    }
-                    if (imageName == "Corn")
-                    {
-                        //you found an image of an apple
-                        label.text = "Corn" + imageName;
-                        Debug.Log("You found" + imageName);
-                        _islandInventory.foundCorn.Invoke();
-
-                    }
-                    if (imageName == "Light")
-                    {
-                        //you found an image of an apple
-                        label.text = "Light" + imageName;
-                        Debug.Log("You found" + imageName);
-                        _islandInventory.foundLight.Invoke();
-
-                    }
-                    if (imageName == "Hammer")
-                    {
-                        //you found an image of an apple
-                        label.text = "Hammer" + imageName;
-                        Debug.Log("You found" + imageName);
-                        _islandInventory.foundHammer.Invoke();
-
-                    }
-                    if (imageName == "Chest")
-                    {
-                        //you found an image of an apple
-                        label.text = "Chest" + imageName;
-                        Debug.Log("You found" + imageName);
-                        _islandInventory.foundHammer.Invoke();
-
-                    }
-
-                    if (imageName == "Region01")
-                    {
-                        //you found an image of an apple
-                        label.text = "Region01" + imageName;
-                        _islandInventory.foundRegion01.Invoke();
-                        Debug.Log("_islandInventory.foundRegion01.Invoke" + imageName);
-
-                    }
-
-                    if (imageName == "Region02")
-                    {
-                        //you found an image of an apple
-                        Debug.Log("You found" + imageName);
-                        _islandInventory.foundRegion02.Invoke();
-
-                    }
-
-                    if (imageName == "Region03")
-                    {
-                        //you found an image of an apple
-                        Debug.Log("You found" + imageName);
-                        _islandInventory.foundRegion03.Invoke();
-
-                    }
-                    if (imageName == "Region04")
-                    {
-                        //you found an image of an apple
-                        Debug.Log("You found" + imageName);
-                        _islandInventory.foundRegion04.Invoke();
-
-                    }
-
-                    ////////////////finding our items in books and showing on main map!
-
-                }
+                GameStateHandler.Instance.ImageFound(imageName);
             }
 
-            label.text = trackedImage.referenceImage.name;
         }
 
         // Disable instantiated prefabs that are no longer being actively tracked
@@ -155,6 +63,8 @@ public class ARPlaceTrackedImages : MonoBehaviour
         {
             _instantiatedPrefabs[trackedImage.referenceImage.name]
                 .SetActive(trackedImage.trackingState == TrackingState.Tracking);
+            
+            // TODO Natty - you might not want to do that, but instead keep the island always (and just refresh the position if the image is tracked later again)
         }
 
         // Remove is called if the subsystem has given up looking for the trackable again.
@@ -167,14 +77,17 @@ public class ARPlaceTrackedImages : MonoBehaviour
             // Note: this code does not delete the ARTrackedImage parent, which was created
             // by AR Foundation, is managed by it and should therefore also be deleted
             // by AR Foundation.
-            Destroy(_instantiatedPrefabs[trackedImage.referenceImage.name]);
+            
+            
+            // Destroy(_instantiatedPrefabs[trackedImage.referenceImage.name]);
             // Also remove the instance from our array
-            _instantiatedPrefabs.Remove(trackedImage.referenceImage.name);
+            // _instantiatedPrefabs.Remove(trackedImage.referenceImage.name);
 
+            // TODO Natty - as said - you might want to keep the island
+            // AND cou will run into NullPointers, if they rescan the same image later again
+            
             // Alternative: do not destroy the instance, just set it inactive
             //_instantiatedPrefabs[trackedImage.referenceImage.name].SetActive(false);
-
-            label.text = $"REMOVED (guid: {trackedImage.referenceImage.guid}).";
         }
     }
 
