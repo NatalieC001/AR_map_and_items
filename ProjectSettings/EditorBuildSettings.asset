@@ -4,7 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/ZeughauseBibloteck_imageTracking.unity
+    guid: f7ff9981c6b08e044a1273b8dff10887
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: bcad77cfff0a5144f802f955794829bf, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 62313375c956e2542b70e756627be471, type: 2}
