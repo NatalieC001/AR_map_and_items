@@ -1,0 +1,9 @@
+3D Models of the human heart
+
+Created by Microsoft, Creative Commons CC-BY-SA
+
+Originally released (no longer available as the Microsoft Remix3D platform has been shut down):
+Human Heart: https://www.remix3d.com/details/059f2766c027458787256ebb47a4094e
+Beating Heart: https://www.remix3d.com/details/059f2766c027458787256ebb47a4094e?section=other-models
+
+This version has been modified with the pivot point moved to make positioning in a 3D world easier.
