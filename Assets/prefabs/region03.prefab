@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6015853624922345100}
   m_Layer: 0
-  m_Name: region03
+  m_Name: Region03
   m_TagString: Region03
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,6 +38,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6015853624922345100}
     m_Modifications:
+    - target: {fileID: 3125166282142885471, guid: 2397cce7e8bfbaa48be26a1b01d980fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3566840603818350153, guid: 2397cce7e8bfbaa48be26a1b01d980fe, type: 3}
       propertyPath: m_Name
       value: Island03
@@ -84,6 +88,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4194018990327598323, guid: 2397cce7e8bfbaa48be26a1b01d980fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7114759374815630946, guid: 2397cce7e8bfbaa48be26a1b01d980fe, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

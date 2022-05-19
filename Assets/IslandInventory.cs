@@ -46,18 +46,20 @@ public class IslandInventory : MonoBehaviour
     public void Start()
     {
 
+        //these should all be on the satge.
+
         //find all items and hide them
-        Apple = GameObject.FindGameObjectWithTag("Apple");
-        Corn = GameObject.FindGameObjectWithTag("Corn");
-        Light = GameObject.FindGameObjectWithTag("Light");
-        Hammer = GameObject.FindGameObjectWithTag("Hammer");
-        Chest = GameObject.FindGameObjectWithTag("Chest");
+        Apple = Instantiate(Resources.Load("prefabs/Apple")) as GameObject;   ///GameObject.FindGameObjectWithTag("Apple");
+        Corn =  Instantiate(Resources.Load("prefabs/Corn")) as GameObject;  //GameObject.FindGameObjectWithTag("Corn");
+        Light = Instantiate(Resources.Load("prefabs/Light")) as GameObject;
+        Hammer = Instantiate(Resources.Load("prefabs/Hammer")) as GameObject;//GameObject.FindGameObjectWithTag("Hammer");
+        Chest = Instantiate(Resources.Load("prefabs/Chest")) as GameObject;// ; GameObject.FindGameObjectWithTag("Chest");
 
         //find all regions and hide them
-        Region01 = GameObject.FindGameObjectWithTag("Region01");
-        Region02 = GameObject.FindGameObjectWithTag("Region02");
-        Region03 = GameObject.FindGameObjectWithTag("Region03");
-        Region04 = GameObject.FindGameObjectWithTag("Region04");
+        Region01 = Instantiate(Resources.Load("prefabs/Region01")) as GameObject;//GameObject.FindGameObjectWithTag("Region01");
+        Region02 = Instantiate(Resources.Load("prefabs/Region02")) as GameObject; //GameObject.FindGameObjectWithTag("Region02");
+        Region03 =  Instantiate(Resources.Load("prefabs/Region03")) as GameObject; //GameObject.FindGameObjectWithTag("Region03");
+        Region04 = Instantiate(Resources.Load("prefabs/Region04")) as GameObject; //GameObject.FindGameObjectWithTag("Region04");
 
         if (!Apple)
         {
@@ -128,50 +130,55 @@ public class IslandInventory : MonoBehaviour
         Apple.SetActive(true);
 
         //found it so dont need to listen anymore
-        foundApple.RemoveListener(FoundApple);
+        //foundApple.RemoveListener(FoundApple);
     }
     void FoundCorn()
     {
         Corn.SetActive(true);
-        foundCorn.RemoveListener(FoundCorn);
+        //foundCorn.RemoveListener(FoundCorn);
     }
     void FoundLight()
     {
         Light.SetActive(true);
-        foundLight.RemoveListener(FoundLight);
+       // foundLight.RemoveListener(FoundLight);
     }
     void FoundHammer()
     {
         Hammer.SetActive(true);
-        foundHammer.RemoveListener(FoundHammer);
+        //foundHammer.RemoveListener(FoundHammer);
     }
     void FoundChest()
     {
         Chest.SetActive(true);
-        foundChest.RemoveListener(FoundChest);
+       // foundChest.RemoveListener(FoundChest);
     }
 
 
     void FoundRegion01()
     {
+        Debug.Log("found region 1 set active");
         //found the island so it will stay visible - can remove the listener
         Region01.SetActive(true);
-        foundRegion01.RemoveListener(FoundRegion01);
+       // foundRegion01.RemoveListener(FoundRegion01);
     }
     void FoundRegion02()
     {
+        Debug.Log("found region 2 set active");
         Region02.SetActive(true);
-        foundRegion02.RemoveListener(FoundRegion02);
+       // foundRegion02.RemoveListener(FoundRegion02);
     }
     void FoundRegion03()
     {
+        Debug.Log("found region 3 set active");
         Region03.SetActive(true);
-        foundRegion03.RemoveListener(FoundRegion03);
+       // foundRegion03.RemoveListener(FoundRegion03);
     }
     void FoundRegion04()
     {
+        Debug.Log("found region 4 set active");
+
         Region04.SetActive(true);
-        foundRegion04.RemoveListener(FoundRegion04);
+       // foundRegion04.RemoveListener(FoundRegion04);
     }
 
 

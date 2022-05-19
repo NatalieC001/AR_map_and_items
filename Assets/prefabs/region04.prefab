@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4508632294209462542}
   m_Layer: 0
-  m_Name: region04
+  m_Name: Region04
   m_TagString: Region04
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,6 +38,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4508632294209462542}
     m_Modifications:
+    - target: {fileID: 3100325256274251525, guid: 795d24f2f3c769946b4eb76a2e1d17aa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4791804934213378702, guid: 795d24f2f3c769946b4eb76a2e1d17aa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7126085203420102456, guid: 795d24f2f3c769946b4eb76a2e1d17aa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8326597834914272660, guid: 795d24f2f3c769946b4eb76a2e1d17aa, type: 3}
       propertyPath: m_RootOrder
       value: 0

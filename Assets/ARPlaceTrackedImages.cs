@@ -60,7 +60,7 @@ public class ARPlaceTrackedImages : MonoBehaviour
                     var newPrefab = Instantiate(curPrefab, trackedImage.transform);
                     // Store a reference to the created prefab
                     _instantiatedPrefabs[imageName] = newPrefab;
-                    label.text = "found" + imageName;
+                   
                     //label.text = $"{Time.time} -> Instantiated prefab for tracked image (name: {imageName}).\n" +
                     //           $"newPrefab.transform.parent.name: {newPrefab.transform.parent.name}.\n" +
                     //           $"guid: {trackedImage.referenceImage.guid}";
@@ -80,6 +80,7 @@ public class ARPlaceTrackedImages : MonoBehaviour
                     if (imageName == "Corn")
                     {
                         //you found an image of an apple
+                        label.text = "Corn" + imageName;
                         Debug.Log("You found" + imageName);
                         _islandInventory.foundCorn.Invoke();
 
@@ -87,6 +88,7 @@ public class ARPlaceTrackedImages : MonoBehaviour
                     if (imageName == "Light")
                     {
                         //you found an image of an apple
+                        label.text = "Light" + imageName;
                         Debug.Log("You found" + imageName);
                         _islandInventory.foundLight.Invoke();
 
@@ -94,6 +96,7 @@ public class ARPlaceTrackedImages : MonoBehaviour
                     if (imageName == "Hammer")
                     {
                         //you found an image of an apple
+                        label.text = "Hammer" + imageName;
                         Debug.Log("You found" + imageName);
                         _islandInventory.foundHammer.Invoke();
 
@@ -101,6 +104,7 @@ public class ARPlaceTrackedImages : MonoBehaviour
                     if (imageName == "Chest")
                     {
                         //you found an image of an apple
+                        label.text = "Chest" + imageName;
                         Debug.Log("You found" + imageName);
                         _islandInventory.foundHammer.Invoke();
 
@@ -109,8 +113,9 @@ public class ARPlaceTrackedImages : MonoBehaviour
                     if (imageName == "Region01")
                     {
                         //you found an image of an apple
-                        Debug.Log("You found" + imageName);
+                        label.text = "Region01" + imageName;
                         _islandInventory.foundRegion01.Invoke();
+                        Debug.Log("_islandInventory.foundRegion01.Invoke" + imageName);
 
                     }
 

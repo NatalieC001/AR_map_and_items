@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2435066013388694060
+--- !u!1 &8921399471362692524
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6679763914715962353}
+  - component: {fileID: 483982812246486129}
   m_Layer: 0
   m_Name: Region02
   m_TagString: Region02
@@ -16,27 +16,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6679763914715962353
+--- !u!4 &483982812246486129
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2435066013388694060}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 8921399471362692524}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2653337108002411918}
+  - {fileID: 9139692762325459470}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2017392704124100178
+--- !u!1001 &4754409051986504146
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 6679763914715962353}
+    m_TransformParent: {fileID: 483982812246486129}
     m_Modifications:
     - target: {fileID: 3775823397534093670, guid: 2f991db55b132b742adbc982504beed4, type: 3}
       propertyPath: m_Name
@@ -92,8 +92,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f991db55b132b742adbc982504beed4, type: 3}
---- !u!4 &2653337108002411918 stripped
+--- !u!4 &9139692762325459470 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4552501452338138076, guid: 2f991db55b132b742adbc982504beed4, type: 3}
-  m_PrefabInstance: {fileID: 2017392704124100178}
+  m_PrefabInstance: {fileID: 4754409051986504146}
   m_PrefabAsset: {fileID: 0}
