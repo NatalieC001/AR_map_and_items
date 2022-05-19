@@ -45,15 +45,23 @@ public class IslandInventory : MonoBehaviour
 
     public void Start()
     {
+
+        //find all items and hide them
         Apple = GameObject.FindGameObjectWithTag("Apple");
         Corn = GameObject.FindGameObjectWithTag("Corn");
         Light = GameObject.FindGameObjectWithTag("Light");
         Hammer = GameObject.FindGameObjectWithTag("Hammer");
         Chest = GameObject.FindGameObjectWithTag("Chest");
 
-        if (!Apple )
+        //find all regions and hide them
+        Region01 = GameObject.FindGameObjectWithTag("Region01");
+        Region02 = GameObject.FindGameObjectWithTag("Region02");
+        Region03 = GameObject.FindGameObjectWithTag("Region03");
+        Region04 = GameObject.FindGameObjectWithTag("Region04");
+
+        if (!Apple)
         {
-            Debug.Log("Apple tag not found"); 
+            Debug.Log("Apple tag not found");
         }
         if (!Corn)
         {
@@ -71,29 +79,36 @@ public class IslandInventory : MonoBehaviour
         {
             Debug.Log("Chest tag not found");
         }
-        if (!hasFoundIsland01)
+        if (!Region01)
         {
-            Debug.Log("hasFoundIsland01 tag not found");
+            Debug.Log("Region01 tag not found");
         }
-        if (!hasFoundIsland02)
+        if (!Region02)
         {
-            Debug.Log("hasFoundIsland02 tag not found");
+            Debug.Log("Region02 tag not found");
         }
-        if (!hasFoundIsland03)
+        if (!Region03)
         {
-            Debug.Log("hasFoundIsland03 tag not found");
+            Debug.Log("Region03 tag not found");
         }
-        if (!hasFoundIsland04)
+        if (!Region04)
         {
-            Debug.Log("hasFoundIsland04 tag not found");
+            Debug.Log("Region04 tag not found");
         }
 
-        //set all invisible until we locate them in books
+        //set all item invisible until we locate them in books
         Apple.SetActive(false);
         Corn.SetActive(false);
         Light.SetActive(false);
         Hammer.SetActive(false);
         Chest.SetActive(false);
+
+        //set all island regions invisible before discovering them
+        Region01.SetActive(false);
+        Region02.SetActive(false);
+        Region03.SetActive(false);
+        Region04.SetActive(false);
+
 
         foundApple.AddListener(FoundApple);
         foundCorn.AddListener(FoundCorn);
@@ -101,6 +116,7 @@ public class IslandInventory : MonoBehaviour
         foundHammer.AddListener(FoundHammer);
         foundChest.AddListener(FoundChest);
 
+        //ad listeners to island parts - find the clue show the region
         foundRegion01.AddListener(FoundRegion01);
         foundRegion02.AddListener(FoundRegion02);
         foundRegion03.AddListener(FoundRegion03);
@@ -135,22 +151,26 @@ public class IslandInventory : MonoBehaviour
         foundChest.RemoveListener(FoundChest);
     }
 
- 
+
     void FoundRegion01()
     {
         //found the island so it will stay visible - can remove the listener
+        Region01.SetActive(true);
         foundRegion01.RemoveListener(FoundRegion01);
     }
     void FoundRegion02()
     {
+        Region02.SetActive(true);
         foundRegion02.RemoveListener(FoundRegion02);
     }
     void FoundRegion03()
     {
+        Region03.SetActive(true);
         foundRegion03.RemoveListener(FoundRegion03);
     }
     void FoundRegion04()
     {
+        Region04.SetActive(true);
         foundRegion04.RemoveListener(FoundRegion04);
     }
 
