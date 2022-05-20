@@ -19,8 +19,8 @@ MonoBehaviour:
       m_GuidLow: 5365180783758451005
       m_GuidHigh: 14038776161478994309
     m_SerializedTextureGuid:
-      m_GuidLow: 13151710655550024697
-      m_GuidHigh: 15511276490391950744
+      m_GuidLow: 3743826008120688436
+      m_GuidHigh: 1726748901824434313
     m_Size: {x: 0.2, y: 0.2}
     m_SpecifySize: 1
     m_Name: HumanHeart
@@ -29,8 +29,8 @@ MonoBehaviour:
       m_GuidLow: 5499239177078745805
       m_GuidHigh: 5865494504943502988
     m_SerializedTextureGuid:
-      m_GuidLow: 16380901546712118838
-      m_GuidHigh: 9022448704499466682
+      m_GuidLow: 12467313019247545071
+      m_GuidHigh: 5458450433563204907
     m_Size: {x: 0.2, y: 0.2}
     m_SpecifySize: 1
     m_Name: BeatingHeart

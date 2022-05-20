@@ -7,18 +7,7 @@ using UnityEngine.Events;
 public enum GameState
 {
     SEARCH_SHIPWRECK,
-    COLLECT_INVENTORY_SEARCH_REGION01,
-    COLLECT_INVENTORY_SEARCH_REGION01_ITEM01,
-    COLLECT_INVENTORY_SEARCH_REGION01_ITEM02,
-    COLLECT_INVENTORY_SEARCH_REGION02,
-    COLLECT_INVENTORY_SEARCH_REGION02_ITEM01,
-    COLLECT_INVENTORY_SEARCH_REGION02_ITEM02,
-    COLLECT_INVENTORY_SEARCH_REGION03,
-    COLLECT_INVENTORY_SEARCH_REGION03_ITEM01,
-    COLLECT_INVENTORY_SEARCH_REGION03_ITEM02,
-    COLLECT_INVENTORY_SEARCH_REGION04,
-    COLLECT_INVENTORY_SEARCH_REGION04_ITEM01,
-    COLLECT_INVENTORY_SEARCH_REGION04_ITEM02,
+    COLLECT_INVENTORY_SEARCH,
     SHIP_SINKING,
     SUCCESS
 }
@@ -28,13 +17,14 @@ public class GameStateHandler : MonoBehaviour
     [Header("Object References")] 
     private static GameStateHandler _gameStateHandler;
     private GameStateChangedEvent _gameStateChangedEvent;
-    private IslandsHandler islandsHandler;
-    private InventoryHandler inventoryHandler;
+    [SerializeField] private IslandsHandler islandsHandler;
+    [SerializeField] private InventoryHandler inventoryHandler;
 
     [Header("State")] 
     private GameState _state;
     [SerializeField] private TextMeshProUGUI tmpLabel;
-
+    [SerializeField] private TextMeshProUGUI searchNextHintLabel;
+    
     public static GameStateHandler Instance
     {
         get
@@ -132,53 +122,68 @@ public class GameStateHandler : MonoBehaviour
             
             case "Region01":
                 islandsHandler.FoundRegion01();
-                SwitchState(GameState.COLLECT_INVENTORY_SEARCH_REGION02);
-                // SwitchState(GameState.COLLECT_INVENTORY_SEARCH_REGION01_ITEM01);
                 break;
             case "Region02":
                 islandsHandler.FoundRegion02();
-                SwitchState(GameState.COLLECT_INVENTORY_SEARCH_REGION03);
-                // SwitchState(GameState.COLLECT_INVENTORY_SEARCH_REGION02_ITEM01);
                 break;
             case "Region03":
                 islandsHandler.FoundRegion03();
-                SwitchState(GameState.COLLECT_INVENTORY_SEARCH_REGION04);
-                // SwitchState(GameState.COLLECT_INVENTORY_SEARCH_REGION03_ITEM01);
                 break;
             case "Region04":
                 islandsHandler.FoundRegion04();
-                SwitchState(GameState.SUCCESS);
-                // SwitchState(GameState.COLLECT_INVENTORY_SEARCH_REGION04_ITEM01);
                 break;
         }
+        GetNextHint();
     }
-    
+
+    private void GetNextHint()
+    {
+        if (islandsHandler.hasFoundIsland04)
+        {
+            ShowHint("Successfully found all items");
+            SwitchState(GameState.SUCCESS);
+        }
+        else if (islandsHandler.hasFoundIsland03)
+            ShowHint("Search Island 4");
+        else if (islandsHandler.hasFoundIsland02)
+            ShowHint("Search Island 3");
+        else if (islandsHandler.hasFoundIsland01)
+            ShowHint("Search Island 2");
+        else
+            ShowHint("Search Island 1");
+    }
+
+    private void ShowHint(string searchIsland)
+    {
+        searchNextHintLabel.text = "Hint: " + searchIsland;
+    }
+
     private void FoundInventoryImage(string imageName)
     {
-        tmpLabel.text = "Image: " + imageName;
+        tmpLabel.text = "Inventory Image: " + imageName;
         Debug.Log("You found" + imageName);
         switch (imageName)
         {
             case "Region01Item01":
-                SwitchState(GameState.COLLECT_INVENTORY_SEARCH_REGION01_ITEM02);
+                // SwitchState(GameState.COLLECT_INVENTORY_SEARCH_REGION01_ITEM02);
                 break;
             case "Region01Item02":
-                SwitchState(GameState.COLLECT_INVENTORY_SEARCH_REGION02);
+                // SwitchState(GameState.COLLECT_INVENTORY_SEARCH_REGION02);
                 break;
             case "Region02Item01":
-                SwitchState(GameState.COLLECT_INVENTORY_SEARCH_REGION02_ITEM02);
+                // SwitchState(GameState.COLLECT_INVENTORY_SEARCH_REGION02_ITEM02);
                 break;
             case "Region02Item02":
-                SwitchState(GameState.COLLECT_INVENTORY_SEARCH_REGION03);
+                // SwitchState(GameState.COLLECT_INVENTORY_SEARCH_REGION03);
                 break;
             case "Region03Item01":
-                SwitchState(GameState.COLLECT_INVENTORY_SEARCH_REGION03_ITEM02);
+                // SwitchState(GameState.COLLECT_INVENTORY_SEARCH_REGION03_ITEM02);
                 break;
             case "Region03Item02":
-                SwitchState(GameState.COLLECT_INVENTORY_SEARCH_REGION04);
+                // SwitchState(GameState.COLLECT_INVENTORY_SEARCH_REGION04);
                 break;
             case "Region04Item01":
-                SwitchState(GameState.COLLECT_INVENTORY_SEARCH_REGION04_ITEM02);
+                // SwitchState(GameState.COLLECT_INVENTORY_SEARCH_REGION04_ITEM02);
                 break;
             case "Region04Item02":
                 SwitchState(GameState.SUCCESS);
@@ -188,8 +193,9 @@ public class GameStateHandler : MonoBehaviour
     
     private void FoundMapShipImage(string imageName)
     {
-        tmpLabel.text = "Image: " + imageName;
+        tmpLabel.text = "last image: " + imageName;
         Debug.Log("You found" + imageName);
-        SwitchState(GameState.COLLECT_INVENTORY_SEARCH_REGION01);
+        SwitchState(GameState.COLLECT_INVENTORY_SEARCH);
+        GetNextHint();
     }
 }

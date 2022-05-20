@@ -21,6 +21,11 @@ public class IslandsHandler : MonoBehaviour
 
     public void Start()
     {
+        hasFoundIsland01 = false;
+        hasFoundIsland02 = false;
+        hasFoundIsland03 = false;
+        hasFoundIsland04 = false;
+        
         //set all island regions invisible before discovering them
         Region01.SetActive(false);
         Region02.SetActive(false);
@@ -32,6 +37,7 @@ public class IslandsHandler : MonoBehaviour
     public void FoundRegion01()
     {
         Debug.Log("found region 1 set active");
+        hasFoundIsland01 = true;
         //found the island so it will stay visible - can remove the listener
         Region01.SetActive(true);
        // foundRegion01.RemoveListener(FoundRegion01);
@@ -40,6 +46,7 @@ public class IslandsHandler : MonoBehaviour
     public void FoundRegion02()
     {
         Debug.Log("found region 2 set active");
+        hasFoundIsland02 = true;
         Region02.SetActive(true);
        // foundRegion02.RemoveListener(FoundRegion02);
     }
@@ -47,6 +54,7 @@ public class IslandsHandler : MonoBehaviour
     public void FoundRegion03()
     {
         Debug.Log("found region 3 set active");
+        hasFoundIsland03 = true;
         Region03.SetActive(true);
        // foundRegion03.RemoveListener(FoundRegion03);
     }
@@ -54,6 +62,7 @@ public class IslandsHandler : MonoBehaviour
     public void FoundRegion04()
     {
         Debug.Log("found region 4 set active");
+        hasFoundIsland04 = true;
         Region04.SetActive(true);
        // foundRegion04.RemoveListener(FoundRegion04);
     }

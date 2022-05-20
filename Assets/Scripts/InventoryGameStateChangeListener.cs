@@ -44,18 +44,7 @@ public class InventoryGameStateChangeListener : GameStateChangeListener
         {
             case GameState.SHIP_SINKING:
                 break;
-            case GameState.COLLECT_INVENTORY_SEARCH_REGION01:
-            case GameState.COLLECT_INVENTORY_SEARCH_REGION01_ITEM01:
-            case GameState.COLLECT_INVENTORY_SEARCH_REGION01_ITEM02:
-            case GameState.COLLECT_INVENTORY_SEARCH_REGION02:
-            case GameState.COLLECT_INVENTORY_SEARCH_REGION02_ITEM01:
-            case GameState.COLLECT_INVENTORY_SEARCH_REGION02_ITEM02:
-            case GameState.COLLECT_INVENTORY_SEARCH_REGION03:
-            case GameState.COLLECT_INVENTORY_SEARCH_REGION03_ITEM01:
-            case GameState.COLLECT_INVENTORY_SEARCH_REGION03_ITEM02:
-            case GameState.COLLECT_INVENTORY_SEARCH_REGION04:
-            case GameState.COLLECT_INVENTORY_SEARCH_REGION04_ITEM01:
-            case GameState.COLLECT_INVENTORY_SEARCH_REGION04_ITEM02:
+            case GameState.COLLECT_INVENTORY_SEARCH:
                 break;
             case GameState.SEARCH_SHIPWRECK:
                 break;
